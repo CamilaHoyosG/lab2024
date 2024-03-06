@@ -7,6 +7,7 @@ package co.com.hyunseda.market.presentation;
 
 
 import co.com.huynseda.microkernel.common.entities.Product;
+import co.com.hyunseda.market.service.CartService;
 import co.com.hyunseda.market.service.ProductService;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,15 +20,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUIProductsFind extends javax.swing.JDialog {
     private ProductService productService;
+    
+    private CartService cartService;
     /**
      * Creates new form GUIProductsFind
      */
 
 
-public GUIProductsFind(ProductService productService ) {
+public GUIProductsFind(ProductService productService, CartService cartService ) {
     initComponents();
     initializeTable();
     this.productService = productService;
+    this.cartService = cartService;
     btnAgregarCarrito.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -40,7 +44,7 @@ public GUIProductsFind(ProductService productService ) {
             double productPrice = (double) tblProducts.getValueAt(row, 4);
 
             Product selectedProduct = new Product(productId, productName, productDescription, productAmount, productPrice);
-            GUIDescription instance = new GUIDescription(selectedProduct);
+            GUIDescription instance = new GUIDescription(selectedProduct, cartService);
             instance.setVisible(true);
         }
     });

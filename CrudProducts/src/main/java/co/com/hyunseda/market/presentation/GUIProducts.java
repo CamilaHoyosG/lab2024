@@ -1,6 +1,7 @@
 package co.com.hyunseda.market.presentation;
 
 import co.com.huynseda.microkernel.common.entities.Product;
+import co.com.hyunseda.market.service.CartService;
 import co.com.hyunseda.market.service.ProductService;
 
 import javax.swing.JOptionPane;
@@ -13,13 +14,17 @@ public class GUIProducts extends javax.swing.JFrame {
 
     private ProductService productService;
     private boolean addOption;
+    
+    private CartService cartService;
 
     /**
      * Creates new form GUIProducts
+     * @param productService
      */
-    public GUIProducts(ProductService productService) {
+    public GUIProducts(ProductService productService, CartService cartService) {
         initComponents();
         this.productService = productService;
+        this.cartService = cartService;
         stateInitial();
 
     }
@@ -262,7 +267,7 @@ public class GUIProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        GUIProductsFind instance = new GUIProductsFind(productService);
+        GUIProductsFind instance = new GUIProductsFind(productService, cartService);
         instance.setVisible(true);
     }//GEN-LAST:event_btnFindActionPerformed
     private void stateEdit() {

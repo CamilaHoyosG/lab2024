@@ -29,12 +29,23 @@ public class Main extends Subject{
         ICartRepository reposiitory = Factory.getInstance().getReposiiitory("jose"); 
         CartService cartService = new CartService(reposiitory);
         GUICurrentCart guiCurrentCart = new GUICurrentCart();
+        
+        GUIOtraVista guiOtra = new GUIOtraVista();
+        guiOtra.setSize(400,300);
+        guiOtra.setVisible(true);
+        
+        GUICarrito2 gui2 = new GUICarrito2();
+        gui2.setSize(400,300);
+        gui2.setVisible(true);        
+        
         cartService.addObserver(guiCurrentCart);
+        cartService.addObserver(guiOtra);
+        cartService.addObserver(gui2);
         
         try {
             IProductRepository repository = Factory.getInstance().getRepository("default");
             ProductService productService = new ProductService(repository);
-            GUIProducts instance = new GUIProducts(productService);
+            GUIProducts instance = new GUIProducts(productService, cartService);
             instance.setVisible(true);
             GUICurrentCart iinstance = new GUICurrentCart();
             iinstance.setVisible(true);

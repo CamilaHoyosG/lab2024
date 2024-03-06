@@ -12,15 +12,19 @@ import java.awt.Frame;
  */
 public class GUIDescription extends javax.swing.JFrame {
     ICartRepository reposiiitory = Factory.getInstance().getReposiiitory("jose");
-    CartService cartService = new CartService(reposiiitory);
+    private CartService cartService;
     private Product productoCopia;
     /**
      * Creates new form GUIDescription
+     * @param producto
+     * @param cartService
      */
-    public GUIDescription(Product producto) {
+    public GUIDescription(Product producto, CartService cartService) {
         initComponents();
         setLocationRelativeTo(null); // Centrar al ventana
         this.cartService = cartService;
+        this.productoCopia = producto;
+
         productoCopia = producto;
         txtNomProduct.setText(producto.getName());
         txtNomProduct.setEditable(false);
