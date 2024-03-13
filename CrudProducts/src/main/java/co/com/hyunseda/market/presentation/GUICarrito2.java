@@ -20,6 +20,17 @@ public class GUICarrito2 extends javax.swing.JFrame  implements Observer {
     public GUICarrito2() {
         initComponents();
     }
+    
+    private int valorTotal() {
+        int suma = 0;
+        for (int i = 0; i < tblCarrito.getRowCount(); i++) {
+            int quantity = (int) tblCarrito.getValueAt(i, 3);
+            double price = (double) tblCarrito.getValueAt(i, 4);
+            int aux = (int) (quantity * price); // Assuming total value is an integer
+            suma += aux;
+        }
+        return suma;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,15 +65,34 @@ public class GUICarrito2 extends javax.swing.JFrame  implements Observer {
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         btnPagar.setText("Pagar");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPagar);
 
         btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCerrar);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        GUIPaySimulated instance = new GUIPaySimulated(valorTotal());
+        instance.setVisible(true);
+    }//GEN-LAST:event_btnPagarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments

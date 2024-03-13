@@ -140,11 +140,9 @@ public class GUIDescription extends javax.swing.JFrame {
         } else {
             Messages.showMessageDialog("Error al grabar, lo siento mucho", "Atención");
         }
+        }else{
+            Messages.showMessageDialog("La cantidad ingresada supera al stock actual", "Atención");
         }
-        
-        Messages.showMessageDialog("La cantidad ingresada supera al stock actual", "Atención");
-            
-        
     }//GEN-LAST:event_btnAddCartActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

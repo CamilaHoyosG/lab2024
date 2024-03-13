@@ -1,3 +1,3 @@
-co/com/huynseda/microkernel/common/entities/Cart.class
-co/com/huynseda/microkernel/common/entities/Product.class
-co/com/huynseda/microkernel/common/interfaces/IPaymentPlugin.class
+co\com\huynseda\microkernel\common\interfaces\IPaymentPlugin.class
+co\com\huynseda\microkernel\common\entities\Cart.class
+co\com\huynseda\microkernel\common\entities\Product.class
